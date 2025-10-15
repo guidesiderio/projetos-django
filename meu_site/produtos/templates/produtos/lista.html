@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Produtos</title>
+    <style>
+      body { font-family: system-ui, Arial; margin: 24px; }
+      table { border-collapse: collapse; width: 100%; }
+      th, td { border: 1px solid #ddd; padding: 8px; }
+      th { background: #f4f4f4; text-align: left; }
+      small { color: #666; }
+    </style>
+  </head>
+  <body>
+    <h1>Produtos</h1>
+    {% if produtos %}
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Criado em</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in produtos %}
+            <tr>
+              <td>{{ p.id }}</td>
+              <td>{{ p.nome }}</td>
+              <td>R$ {{ p.preco }}</td>
+              <td><small>{{ p.criado_em|date:"d/m/Y H:i" }}</small></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>Nenhum produto cadastrado.</p>
+    {% endif %}
+  </body>
+</html>
