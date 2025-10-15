@@ -1,0 +1,4 @@
+/* Pequenos ajustes visuais do projeto */
+body { letter-spacing: .1px; }
+.navbar-brand { letter-spacing: .3px; }
+.table td, .table th { vertical-align: middle; }
