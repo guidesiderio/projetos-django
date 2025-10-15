@@ -26,7 +26,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 import os
 
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
-raise RuntimeError("DJANGO_SECRET_KEY environment variable not set")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True

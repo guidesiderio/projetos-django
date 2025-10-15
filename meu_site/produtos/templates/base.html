@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <title>{% block title %}App{% endblock %}</title>
+  <style>
+    body { font-family: system-ui, Arial; margin: 24px; max-width: 900px; }
+    .topbar { margin-bottom: 16px; }
+    .btn { padding: 8px 12px; border: 1px solid #ccc; text-decoration: none; border-radius: 6px; display: inline-block; }
+    .btn-primary { background: #f1f1f1; }
+    .btn-danger { background: #ffe5e5; border-color: #ffb3b3; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f7f7f7; text-align: left; }
+    .messages { margin: 12px 0; }
+    .messages li { list-style: none; background: #e7ffe7; border: 1px solid #b6e7b6; padding: 8px; margin: 6px 0; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="btn" href="{% url 'lista_produtos' %}">🏠 Início</a>
+    <a class="btn btn-primary" href="{% url 'criar_produto' %}">➕ Novo produto</a>
+  </div>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for m in messages %}
+        <li>{{ m }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+</body>
+</html>
