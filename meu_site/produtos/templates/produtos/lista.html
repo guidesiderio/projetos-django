@@ -1,28 +1,33 @@
 {% extends "base.html" %}
-{% block title %}Produtos{% endblock %}
+{% block title %}Produtos · Meu Site{% endblock %}
 {% block content %}
-<h1>Produtos</h1>
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h1 class="h3 m-0">Produtos</h1>
+    <a class="btn btn-primary" href="{% url 'criar_produto' %}">➕ Novo produto</a>
+  </div>
 
-{% if produtos %}
-  <table>
-    <thead>
-      <tr><th>ID</th><th>Nome</th><th>Preço</th><th>Ações</th></tr>
-    </thead>
-    <tbody>
-      {% for p in produtos %}
-      <tr>
-        <td>{{ p.id }}</td>
-        <td>{{ p.nome }}</td>
-        <td>R$ {{ p.preco }}</td>
-        <td>
-          <a class="btn" href="{% url 'editar_produto' p.id %}">✏️ Editar</a>
-          <a class="btn btn-danger" href="{% url 'excluir_produto' p.id %}">🗑️ Excluir</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-{% else %}
-  <p>Nenhum produto cadastrado.</p>
-{% endif %}
+  {% if produtos %}
+    <div class="table-responsive">
+      <table class="table table-sm table-hover align-middle">
+        <thead class="table-light">
+          <tr><th>ID</th><th>Nome</th><th class="text-end">Preço</th><th class="text-end">Ações</th></tr>
+        </thead>
+        <tbody>
+          {% for p in produtos %}
+            <tr>
+              <td>{{ p.id }}</td>
+              <td>{{ p.nome }}</td>
+              <td class="text-end">R$ {{ p.preco }}</td>
+              <td class="text-end">
+                <a class="btn btn-outline-secondary btn-sm" href="{% url 'editar_produto' p.id %}">✏️ Editar</a>
+                <a class="btn btn-outline-danger btn-sm" href="{% url 'excluir_produto' p.id %}">🗑️ Excluir</a>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <div class="alert alert-warning">Nenhum produto cadastrado.</div>
+  {% endif %}
 {% endblock %}
