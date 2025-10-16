@@ -2,17 +2,32 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Produto
 from .forms import ProdutoForm
+from django.core.paginator import Paginator
 
 # Create your views here.
 
-def lista_produtos(request):
-    produtos = Produto.objects.order_by("-criado_em")
-    return render(request, "produtos/lista.html", {"produtos": produtos})
-
 # READ (lista)
 def lista_produtos(request):
-    produtos = Produto.objects.order_by("-criado_em")
-    return render(request, "produtos/lista.html", {"produtos": produtos})
+    q = request.GET.get("q", "").strip()
+    qs = Produto.objects.all().order_by("-criado_em")
+    if q:
+        qs = qs.filter(nome__icontains=q)
+
+    paginator = Paginator(qs, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    page_range = page_obj.paginator.get_elided_page_range(
+        number=page_obj.number, on_each_side=1, on_ends=1
+    )
+
+    context = {
+        "q": q,
+        "page_obj": page_obj,
+        "page_range": page_range,
+        "total": paginator.count,
+    }
+    return render(request, "produtos/lista.html", context)
 
 # CREATE
 def criar_produto(request):
