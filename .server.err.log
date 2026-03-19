@@ -1,2 +1,17 @@
 [18/Mar/2026 21:27:49] "GET /produtos/ HTTP/1.1" 200 4215
 [18/Mar/2026 21:27:49,679] - Broken pipe from ('127.0.0.1', 52849)
+Not Found: /
+[18/Mar/2026 21:29:42] "GET / HTTP/1.1" 404 2311
+Not Found: /favicon.ico
+[18/Mar/2026 21:29:42] "GET /favicon.ico HTTP/1.1" 404 2362
+Not Found: /
+[18/Mar/2026 21:29:44] "GET / HTTP/1.1" 404 2311
+Not Found: /
+[18/Mar/2026 21:29:45] "GET / HTTP/1.1" 404 2311
+Not Found: /prodtuos
+[18/Mar/2026 21:29:57] "GET /prodtuos HTTP/1.1" 404 2353
+[18/Mar/2026 21:30:04] "GET /produtos HTTP/1.1" 301 0
+[18/Mar/2026 21:30:04] "GET /produtos/ HTTP/1.1" 200 4215
+[18/Mar/2026 21:30:04] "GET /static/css/custom.css HTTP/1.1" 200 166
+Not Found: /
+[18/Mar/2026 21:33:35] "GET / HTTP/1.1" 404 2311
